@@ -4,10 +4,11 @@ package repetiton;
 
 
 public class WetterWerteGUI extends java.awt.Frame {
-
+    private WetterModell modele = new WetterModell();
    
     public WetterWerteGUI() {
         initComponents();
+        jlList.setModel(modele);
     }
 
    
@@ -40,7 +41,8 @@ public class WetterWerteGUI extends java.awt.Frame {
 
         jLabel2.setText("Anzeige");
 
-        lbTemp.setText("Temperatur 18°");
+        lbTemp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTemp.setText("Temperatur: 18°");
 
         jsTemp.setMajorTickSpacing(10);
         jsTemp.setMaximum(40);
@@ -55,6 +57,7 @@ public class WetterWerteGUI extends java.awt.Frame {
             }
         });
 
+        lbLuftfeuchtigkeit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbLuftfeuchtigkeit.setText("Luftfeuchtigkeit: 52%");
 
         jsLuftfeuchtigkeit.setMajorTickSpacing(20);
@@ -91,13 +94,13 @@ public class WetterWerteGUI extends java.awt.Frame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btEinfügen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jsLuftfeuchtigkeit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(lbLuftfeuchtigkeit, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                     .addComponent(jsTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(lbTemp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbLuftfeuchtigkeit, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -128,12 +131,27 @@ public class WetterWerteGUI extends java.awt.Frame {
         menuEdit.setLabel("Edit");
 
         miSpeichern.setLabel("Datei-Speichern");
+        miSpeichern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onSpeichern(evt);
+            }
+        });
         menuEdit.add(miSpeichern);
 
         miLaden.setLabel("Datei-Laden");
+        miLaden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onLaden(evt);
+            }
+        });
         menuEdit.add(miLaden);
 
         miBeenden.setLabel("Datei-Beenden");
+        miBeenden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onBeenden(evt);
+            }
+        });
         menuEdit.add(miBeenden);
 
         menuBar1.add(menuEdit);
@@ -149,16 +167,28 @@ public class WetterWerteGUI extends java.awt.Frame {
     }//GEN-LAST:event_exitForm
 
     private void onEinfügen(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onEinfügen
-        // TODO add your handling code here:
+        modele.add(new WetterWert(jsTemp.getValue(),jsLuftfeuchtigkeit.getValue()));
     }//GEN-LAST:event_onEinfügen
 
     private void onLuftChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_onLuftChanged
-        System.out.println("Ding");
+        lbLuftfeuchtigkeit.setText("Luftfeuchtigkeit: "+jsLuftfeuchtigkeit.getValue()+"%");
     }//GEN-LAST:event_onLuftChanged
 
     private void onTempChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_onTempChanged
-        // TODO add your handling code here:
+        lbTemp.setText("Temperatur: "+jsTemp.getValue()+"°");
     }//GEN-LAST:event_onTempChanged
+
+    private void onSpeichern(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onSpeichern
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onSpeichern
+
+    private void onLaden(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onLaden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onLaden
+
+    private void onBeenden(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onBeenden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onBeenden
 
     
     public static void main(String args[]) {

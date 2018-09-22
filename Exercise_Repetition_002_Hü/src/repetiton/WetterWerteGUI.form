@@ -13,16 +13,25 @@
               <Properties>
                 <Property name="label" type="java.lang.String" value="Datei-Speichern"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onSpeichern"/>
+              </Events>
             </MenuItem>
             <MenuItem class="java.awt.MenuItem" name="miLaden">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Datei-Laden"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onLaden"/>
+              </Events>
             </MenuItem>
             <MenuItem class="java.awt.MenuItem" name="miBeenden">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Datei-Beenden"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onBeenden"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -67,14 +76,14 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="btEinfügen" max="32767" attributes="0"/>
                       <Component id="jsLuftfeuchtigkeit" pref="0" max="32767" attributes="0"/>
-                      <Component id="lbLuftfeuchtigkeit" pref="174" max="32767" attributes="0"/>
                       <Component id="jsTemp" pref="0" max="32767" attributes="0"/>
                       <Component id="lbTemp" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lbLuftfeuchtigkeit" alignment="1" pref="174" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" pref="254" max="32767" attributes="0"/>
+                      <Component id="jLabel2" pref="251" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -121,7 +130,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lbTemp">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Temperatur 18&#xb0;"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Temperatur: 18&#xb0;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSlider" name="jsTemp">
@@ -140,6 +150,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lbLuftfeuchtigkeit">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Luftfeuchtigkeit: 52%"/>
           </Properties>
         </Component>
