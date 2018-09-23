@@ -2,13 +2,18 @@
 
 package repetiton;
 
+import java.io.IOException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class WetterWerteGUI extends java.awt.Frame {
-    private WetterModell modele = new WetterModell();
+    private WetterModell bl = new WetterModell();
    
     public WetterWerteGUI() {
         initComponents();
-        jlList.setModel(modele);
+        jlList.setModel(bl);
     }
 
    
@@ -128,7 +133,7 @@ public class WetterWerteGUI extends java.awt.Frame {
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        menuEdit.setLabel("Edit");
+        menuEdit.setLabel("Datei");
 
         miSpeichern.setLabel("Datei-Speichern");
         miSpeichern.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +172,7 @@ public class WetterWerteGUI extends java.awt.Frame {
     }//GEN-LAST:event_exitForm
 
     private void onEinfügen(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onEinfügen
-        modele.add(new WetterWert(jsTemp.getValue(),jsLuftfeuchtigkeit.getValue()));
+        bl.add(new WetterWert(jsTemp.getValue(),jsLuftfeuchtigkeit.getValue(),new Date().getTime()));
     }//GEN-LAST:event_onEinfügen
 
     private void onLuftChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_onLuftChanged
@@ -179,15 +184,23 @@ public class WetterWerteGUI extends java.awt.Frame {
     }//GEN-LAST:event_onTempChanged
 
     private void onSpeichern(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onSpeichern
-        // TODO add your handling code here:
+        try {
+            bl.speichern();
+        } catch (IOException ex) {
+            Logger.getLogger(WetterWerteGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_onSpeichern
 
     private void onLaden(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onLaden
-        // TODO add your handling code here:
+        try {
+            bl.laden();
+        } catch (IOException ex) {
+            Logger.getLogger(WetterWerteGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_onLaden
 
     private void onBeenden(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onBeenden
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_onBeenden
 
     
